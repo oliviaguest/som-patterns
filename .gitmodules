@@ -1,0 +1,6 @@
+[submodule "phonological-features"]
+	path = phonological-features
+	url = git@github.com:oliviaguest/phonological-features.git
+[submodule "semantic-features"]
+	path = semantic-features
+	url = git@github.com:oliviaguest/semantic-features.git
