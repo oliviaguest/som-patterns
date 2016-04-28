@@ -3,7 +3,14 @@ import cPickle as pkl
 
 
 
+try:
 
+    phon = pkl.load(open('./phonological-features/phon_pat.pkl', 'r'))
+    print np.asarray(phon.values()).shape
+except IOError as e:
+    print "I/O error({0}): {1}".format(e.errno, e.strerror)
+    print 'Try pulling the phonological-features repo, perhaps?'
+    exit()
 
 #print R['ivl']# this is the order that the patterns must be sorted into for the dissimilalirty matrix
 #st = set(labels)
@@ -12,7 +19,7 @@ import cPickle as pkl
 #print np.sort(a, order=R['ivl'])
 try:
   pkl_file = open('./semantic-features/resources/Tyler.pkl', 'rb')
-  patterns, _, labels, _, _ = pickle.load(pkl_file)
+  patterns, _, labels, _, _ = pkl.load(pkl_file)
 
 except IOError as e:
     print "I/O error({0}): {1}".format(e.errno, e.strerror)
@@ -24,7 +31,7 @@ print labels
 #create semantic patterns with the same labels
 #recall intersection means some get left out
 #get the indices of words that are in both word lists
-st = set(phon_dict.keys())
+st = set(phon.keys())
 #Tyler calls telephone 'telephone' Themis calls in 'phone'
 
 keep_word = [i for i, e in enumerate(labels) if e in st]
@@ -45,23 +52,25 @@ phon_dict = dict(zip(labels, phon))
 
 
 sem_dict = dict(zip(labels, patterns))
-pickle.dump(sem_dict, open('sem_pat.pkl', 'w'))
+pkl.dump(sem_dict, open('./semantic-features/sem_pat.pkl', 'w'))
 
 
 
 
 
-phon = pkl.load(open('phon_pat.pkl', 'r'))
-print np.asarray(phon.values()).shape
 
 on = []
 for v in phon.values():
   on.append(sum(v))
 print np.mean(on)
 
-sem = pkl.load(open('sem_pat.pkl', 'r'))
-print np.asarray(sem.values()).shape
-
+try:
+  sem = pkl.load(open('./semantic-features/sem_pat.pkl', 'r'))
+  print np.asarray(sem.values()).shape
+except IOError as e:
+    print "I/O error({0}): {1}".format(e.errno, e.strerror)
+    print 'Try pulling the semantic-features repo, perhaps?'
+    exit()
 on = []
 for v in sem.values():
   on.append(sum(v))
