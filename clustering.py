@@ -138,12 +138,14 @@ pkl_file = open('./semantic-features/resources/Tyler.pkl', 'rb')
 _, _, concepts, _, _ = pickle.load(pkl_file)
 X = []
 labels = []
+#counter = 0
 for i in concepts:
-  #print i
-  #print 
+  if i == 'telephone': #Themis renamed this
+    i = 'phone'
   if i in sem:
     X.append(sem[i])
-    labels.append(i)
+    labels.append(i)   
+    #counter += 1
 
 
 pca = PCA(n_components=396)
