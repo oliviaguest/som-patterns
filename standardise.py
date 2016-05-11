@@ -101,3 +101,11 @@ for s in range(0, sem_val.shape[1]):
 #so we can now nuke clumns if required
 sem_val = np.delete(sem_val, np.where(keep_col == False), 1)
 print sem_val.shape
+
+
+sem_dict = dict(zip(sem.keys(), sem_val))
+pkl.dump(sem_dict, open('./semantic-features/sem_pat.pkl', 'w'))
+
+
+
+
