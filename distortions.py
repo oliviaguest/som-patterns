@@ -106,4 +106,4 @@ for label in labels:
 create_heatmap(sem_ordered, sem_ordered_labels, 'sem_distortions')
 create_heatmap(phon_ordered, phon_ordered_labels, 'phon_distortions')
 
-pickle.dump([sem_ordered, phon_ordered, sem_ordered_labels], open('./semantic-features/distortions.pkl', 'w'))
+pickle.dump([sem_ordered, phon_ordered, sem_ordered_labels], open('./distortions.pkl', 'w'))
