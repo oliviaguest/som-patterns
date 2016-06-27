@@ -88,7 +88,7 @@ sem_ordered = []
 sem_ordered_labels = []
 for label in labels:
     for distortion in distortions:
-        sem_cpy[label+str(distortion)] = sem[label] + np.random.normal(0, 0.1, len(sem[label]))
+        sem_cpy[label+str(distortion)] = sem[label] + np.random.normal(0, 0.1*distortion, len(sem[label]))
         sem_ordered.append(sem_cpy[label+str(distortion)])
         sem_ordered_labels.append(label+str(distortion))
     # print label+'1 ', sem_cpy[label+'1']
