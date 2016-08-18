@@ -4,3 +4,7 @@
 [submodule "phonological-features"]
 	path = phonological-features
 	url = git@github.com:oliviaguest/phonological-features.git
+[submodule "som-patterns"]
+	path = som-patterns
+	url = git@github.com:oliviaguest/som-patterns.git
+	branch = master
